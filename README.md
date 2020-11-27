@@ -9,8 +9,9 @@ Human activities lead more and more to the disturbance of plant and animal commu
 
 
 Folders:
-	- "Experiments": Data from the metacommunity experiment (species density over time) and code to conduct the statistical analyses (Tab 1, 2, S2 and S3) and plot the associated figures (Fig. 1 and 3). Data in "Experiments/Data". Run "Experiments/Script_fig1.R" and "Experiments/Script_fig3.R" to replicate the statistical analysis and plot the figures 1 and 3.
 
-	- "Lotka-Volterra_fit": Data from the single patch cultures (species density over time) and R code to fit competitive Lotka-Volterra equations to the data (used to parameterize the metacommunity model). Single patch time series are in "Lotka-Volterra_fit/Data". Run "Lotka-Volterra_fit/Model_fit.R" to conduct the fit.
+- "Experiments": Data from the metacommunity experiment (species density over time) and code to conduct the statistical analyses (Tab 1, 2, S2 and S3) and plot the associated figures (Fig. 1 and 3). Data in "Experiments/Data". Run "Experiments/Script_fig1.R" and "Experiments/Script_fig3.R" to replicate the statistical analysis and plot the figures 1 and 3.
 
-	- "Metacommunity_model": Code to run the metacommunity model, with a minimal working example (run "Metacommunity_model/Minimal_example.R").
+- "Lotka-Volterra_fit": Data from the single patch cultures (species density over time) and R code to fit competitive Lotka-Volterra equations to the data (used to parameterize the metacommunity model). Single patch time series are in "Lotka-Volterra_fit/Data". Run "Lotka-Volterra_fit/Model_fit.R" to conduct the fit.
+
+- "Metacommunity_model": Code to run the metacommunity model, with a minimal working example (run "Metacommunity_model/Minimal_example.R").
