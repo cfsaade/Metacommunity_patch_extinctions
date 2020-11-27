@@ -1,6 +1,4 @@
-Code and data for
-"Spatial distribution of local patch extinctions drives recovery dynamics in metacommunities"
-Camille Saade, Sonia Kéfi, Claire Gougat-Barbera, Benjamin Rosenbaum & Emanuel A. Fronhofer
+Code and data for "Spatial distribution of local patch extinctions drives recovery dynamics in metacommunities" (Camille Saade, Sonia Kéfi, Claire Gougat-Barbera, Benjamin Rosenbaum & Emanuel A. Fronhofer)
 
 
 Abstract:
