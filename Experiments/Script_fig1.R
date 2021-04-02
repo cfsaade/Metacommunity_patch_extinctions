@@ -51,7 +51,7 @@
   density_data$correlation_label = rep("", n)
   
   density_data$correlation_label[!density_data$correlation] = "Dispersed extinctions"
-  density_data$correlation_label[density_data$correlation] = "Clumped extinctions"
+  density_data$correlation_label[density_data$correlation] = "Clustered extinctions"
   density_data$n_extinctions_label = paste(density_data$n_extinctions, "extinctions", sep = " ")
   density_data$n_extinctions_factor = density_data$n_extinctions == 8
   density_data$n_extinctions_label[density_data$n_extinctions == 0] = "0 extinction"
@@ -67,7 +67,7 @@
   tube_table$treatment_label = c(rep(0, 48), rep(1, 48), rep(2, 48), rep(3, 48), rep(4, 48))
   
   tube_table$correlation_label[!tube_table$correlation] = "Dispersed extinctions"
-  tube_table$correlation_label[tube_table$correlation] = "Clumped extinctions"
+  tube_table$correlation_label[tube_table$correlation] = "Clustered extinctions"
   tube_table$n_extinctions_label = paste(tube_table$n_extinctions, "extinctions", sep = " ")
   tube_table$n_extinctions_label[tube_table$n_extinctions == 0] = "0 extinction"
   
@@ -119,11 +119,17 @@
   
 
 ## Subsetting the data ##################################################################################################
-  ## we use only the data from after the extinctions
+  ## we use only the data from after the extinctions in extinct patches for models
   
   post_ext_data = density_data[density_data$hours > 345 & density_data$n_extinctions != 0 & density_data$extinction == T,]
   post_ext_landscape_data = density_data[density_data$hours > 345 & density_data$n_extinctions != 0 & density_data$position == 1,]
   
+  # all post-extinctions data for the figures
+  fig_data = density_data[density_data$hours > 345 & (density_data$n_extinctions == 0 | density_data$extinction == T),]
+  fig_data$correlation_label[fig_data$n_extinctions == 0] = "No extinction"
+  
+  fig_data_landscape = density_data[density_data$hours > 345 & density_data$position == 1,]
+  fig_data_landscape$correlation_label[fig_data_landscape$n_extinctions == 0] = "No extinction"
 
   
 
@@ -490,7 +496,7 @@
   ## making labels for figure
   predictions_table$correlation_label = rep("", n_pred*4)
   predictions_table$correlation_label[!predictions_table$correlation] = "Dispersed extinctions"
-  predictions_table$correlation_label[predictions_table$correlation] = "Clumped extinctions"
+  predictions_table$correlation_label[predictions_table$correlation] = "Clustered extinctions"
   
   
   ## Denormalizing the predictions
@@ -544,7 +550,7 @@
   
   summary_table$correlation_label = rep("", 4)
   summary_table$correlation_label[!summary_table$correlation] = "Dispersed extinctions"
-  summary_table$correlation_label[summary_table$correlation] = "Clumped extinctions"
+  summary_table$correlation_label[summary_table$correlation] = "Clustered extinctions"
   
   summary_table$simpson_center = (summary_table$simpson_max + summary_table$simpson_min)/2
   summary_table$simpson_height = summary_table$simpson_max - summary_table$simpson_min
@@ -565,19 +571,29 @@
   
   
   ## setting the color scale 
-  colors = c("red", "blue")
+  #colors = c("red", "blue")
+  colors = c("red", "blue", "green")
   names(colors) = levels(post_ext_data$correlation_label)
   colScale = scale_colour_manual(name = "Treatment",values = colors)
   fillScale = scale_fill_manual(name = "Treatment",values = colors)
   
   
   ## preparing the plots
-  g = ggplot(data = post_ext_data, mapping = aes(x = as.factor(n_extinctions), fill = correlation_label,
-                                                 color = correlation_label, group = correlation_label))
+  #g = ggplot(data = post_ext_data, mapping = aes(x = as.factor(n_extinctions), fill = correlation_label,
+  #                                               color = correlation_label, group = correlation_label))
   
-  h = ggplot(data = post_ext_landscape_data, mapping = aes(x = as.factor(n_extinctions), fill = correlation_label,
-                                                           color = correlation_label, group = correlation_label))
+  #h = ggplot(data = post_ext_landscape_data, mapping = aes(x = as.factor(n_extinctions), fill = correlation_label,
+  #                                                         color = correlation_label, group = correlation_label))
   
+  g = ggplot(data = fig_data, mapping = aes(x = as.factor(n_extinctions), fill = correlation_label,
+                                          color = correlation_label, group = correlation_label))
+
+  h = ggplot(data = fig_data_landscape, mapping = aes(x = as.factor(n_extinctions), fill = correlation_label,
+                                                    color = correlation_label, group = correlation_label))
+
+
+
+
   ## graphical parameters
   alpha_box = 0.3 ## boxes transparency
   alpha_points = 0.5 ## points transparency

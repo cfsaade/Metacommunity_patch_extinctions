@@ -50,7 +50,7 @@
   density_data$correlation_label = rep("", n)
   
   density_data$correlation_label[!density_data$correlation] = "Dispersed extinctions"
-  density_data$correlation_label[density_data$correlation] = "Clumped extinctions"
+  density_data$correlation_label[density_data$correlation] = "Clustered extinctions"
   density_data$correlation_label[density_data$n_extinctions == 0] = "No extinctions"
   density_data$n_extinctions_label = paste(density_data$n_extinctions, "extinctions", sep = " ")
   density_data$n_extinctions_factor = density_data$n_extinctions == 8
@@ -67,7 +67,7 @@
   tube_table$treatment_label = c(rep(0, 48), rep(1, 48), rep(2, 48), rep(3, 48), rep(4, 48))
   
   tube_table$correlation_label[!tube_table$correlation] = "Dispersed extinctions"
-  tube_table$correlation_label[tube_table$correlation] = "Clumped extinctions"
+  tube_table$correlation_label[tube_table$correlation] = "Clustered extinctions"
   tube_table$n_extinctions_label = paste(tube_table$n_extinctions, "extinctions", sep = " ")
   tube_table$n_extinctions_label[tube_table$n_extinctions == 0] = "0 extinction"
   
@@ -275,8 +275,8 @@
   
   ## table for saving the predictions
   predictions_table = data.frame(n_extinctions = c(0, 4, 4, 8, 8), correlation = c(F, F, T, F, T),
-                                 correlation_label = c("No extinctions", "Clumped extinctions", "Dispersed extinctions",
-                                                       "Clumped extinctions", "Dispersed extinctions"))
+                                 correlation_label = c("No extinctions", "Clustered extinctions", "Dispersed extinctions",
+                                                       "Clustered extinctions", "Dispersed extinctions"))
   predictions_table$norm_simpson = NA
   predictions_table$norm_bioarea = NA
   
@@ -315,8 +315,8 @@
 ## summary of predictions ################################################################################
   # making a summary of the predictions with only the median and 95% CI for all values
   summary_table = data.frame(n_extinctions = c(0, 4, 4, 8, 8), correlation = c(F, F, T, F, T),
-                             correlation_label = c("No extinctions", "Clumped extinctions", "Dispersed extinctions",
-                                                   "Clumped extinctions", "Dispersed extinctions"))
+                             correlation_label = c("No extinctions", "Clustered extinctions", "Dispersed extinctions",
+                                                   "Clustered extinctions", "Dispersed extinctions"))
   
   summary_table$simpson = NA
   summary_table$simpson_min = NA
