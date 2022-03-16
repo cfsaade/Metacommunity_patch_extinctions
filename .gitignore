@@ -1,0 +1,3 @@
+*.log
+*.Rhistory
+*full_data.csv
